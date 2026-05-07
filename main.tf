@@ -59,7 +59,7 @@ resource "null_resource" "ansible" {
   for_each = var.components
 
   triggers = {
-    instance = azurerm_linux_virtual_machine.main.id
+    instance = azurerm_linux_virtual_machine.main[each.key].id
   }
 
   provisioner "remote-exec" {
